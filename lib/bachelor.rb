@@ -32,16 +32,25 @@ end
 def count_contestants_by_hometown(data, hometown)
   all_contestants(data).reduce(0) do |total,hash|
     if hash["hometown"] == hometown
-      binding.pry
       total + 1
+    else
+      total
     end
   end
 end
 
 def get_occupation(data, hometown)
-  # code here
+  all_contestants(data).find do |hash|
+    if hash["hometown"] == hometown
+      return hash["occupation"]
+    end
+  end
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+  contestants = data[season]
+  total_age = contestants.reduce(0) do |age,hash|
+    age + hash["age"].to_i
+  end
+  average_age = (total_age/contestants.length.to_f).round()
 end
