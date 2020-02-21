@@ -12,21 +12,12 @@ def all_contestants(data)
   data.values.flatten
 end
 
-# def get_contestant_name(data, occupation)
-#   #HoAoH
-#   contestant = all_contestants(data).find do |hash|
-#     hash["occupation"] == occupation
-#   end
-#   contestant["name"]
-# end
-
 def get_contestant_name(data, occupation)
   #HoAoH
-  all_contestants(data).find do |hash|
-    if hash["occupation"] == occupation
-      return hash["name"]
-    end
+  contestant = all_contestants(data).find do |hash|
+    hash["occupation"] == occupation
   end
+  contestant["name"]
 end
 
 def count_contestants_by_hometown(data, hometown)
